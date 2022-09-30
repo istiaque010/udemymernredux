@@ -66,21 +66,28 @@ router.post(
   await user.save();
 
   //return jsonwebtoken
+  const payload = {
+    user: {
+      id: user.id
+    }
+  };
 
-    res.send("User registered");
-
+  jwt.sign(
+    payload,
+    config.get('jwtSecret'),
+    { expiresIn: '5 days' },
+    (err, token) => {
+      if (err) throw err;
+      res.json({ token });
+    }
+  );
+    
   }catch(err){
 
     console.error(err.message);
+    res.status(500).send('Server error');
 
   }
-
-
-
-
-
-
-
 
 
 });
