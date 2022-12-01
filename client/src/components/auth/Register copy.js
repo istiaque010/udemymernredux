@@ -20,6 +20,8 @@ const Register = () => {
     if (password !== password2) {
       console.log('Password do not match');
     } else {
+      console.log('Success');
+      /* this code just to make a request and check but later it will happen in Redux
       //console.log(formData);
       const newUser = {
         name,
@@ -39,7 +41,7 @@ const Register = () => {
         console.log(res.data);
       } catch (err) {
         console.error.apply(err.response.data);
-      }
+      }*/
     }
   };
 
